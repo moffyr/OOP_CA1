@@ -54,6 +54,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         saveBtn = new javax.swing.JButton();
         clearBtn = new javax.swing.JButton();
         viewShiftsBtn = new javax.swing.JButton();
+        homeBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -272,6 +273,11 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         viewShiftsBtn.setText("View My Shifts");
         viewShiftsBtn.addActionListener(this::viewShiftsBtnActionPerformed);
 
+        homeBtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        homeBtn.setForeground(new java.awt.Color(38, 38, 38));
+        homeBtn.setText("Home");
+        homeBtn.addActionListener(this::homeBtnActionPerformed);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -288,13 +294,17 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
                                 .addComponent(payPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 21, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
+                                .addGap(15, 15, 15)
                                 .addComponent(viewShiftsBtn)
-                                .addGap(57, 57, 57)
+                                .addGap(48, 48, 48)
                                 .addComponent(clearBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(saveBtn)
                                 .addGap(38, 38, 38))))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(homeBtn)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,7 +321,9 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
                             .addComponent(viewShiftsBtn)
                             .addComponent(clearBtn)
                             .addComponent(saveBtn))))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(homeBtn)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Add Shift", jPanel1);
@@ -357,9 +369,15 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewShiftsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewShiftsBtnActionPerformed
-        // open EarningsSummaryGUI
+        jTabbedPane1.setSelectedIndex(1);
        
     }//GEN-LAST:event_viewShiftsBtnActionPerformed
+
+    private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
+        // open LandingGUI
+        new fairwork.LandingGUI().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_homeBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -398,6 +416,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     private javax.swing.JTextField endTF;
     private javax.swing.JLabel grossPayLbl;
     private javax.swing.JTextField grossPayTF;
+    private javax.swing.JButton homeBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
