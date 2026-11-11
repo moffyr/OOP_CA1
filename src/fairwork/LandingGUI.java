@@ -247,8 +247,9 @@ public class LandingGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rightsOpenBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightsOpenBtnActionPerformed
-        //opens RightsMenuGUI
-<<<<<<< HEAD
+        //opens RightsGUI
+        new fairwork.rights.RightsGUI().setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_rightsOpenBtnActionPerformed
 
@@ -257,20 +258,11 @@ public class LandingGUI extends javax.swing.JFrame {
         new fairwork.support.FairworkSupportGUI().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_rightsOpenBtn1ActionPerformed
-
-    private void rightsOpenBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightsOpenBtn2ActionPerformed
-        // TODO add your handling code here:
-=======
-    }//GEN-LAST:event_rightsOpenBtnActionPerformed
-
-    private void rightsOpenBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightsOpenBtn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rightsOpenBtn1ActionPerformed
-
+  
     private void rightsOpenBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightsOpenBtn2ActionPerformed
         new FairWorkReports.FairWorkReportsGUI().setVisible(true);
         this.dispose();
->>>>>>> Ritika
+
     }//GEN-LAST:event_rightsOpenBtn2ActionPerformed
 
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
