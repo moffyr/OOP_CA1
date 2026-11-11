@@ -30,7 +30,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        titleLbl2 = new javax.swing.JLabel();
         shiftPnl = new javax.swing.JPanel();
         shiftDetailsLbl = new javax.swing.JLabel();
         dateLbl = new javax.swing.JLabel();
@@ -93,9 +93,9 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("    Add Work Shift");
+        titleLbl2.setBackground(new java.awt.Color(255, 255, 255));
+        titleLbl2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titleLbl2.setText("    Add Work Shift");
 
         shiftPnl.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -221,7 +221,6 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         paidHoursLbl.setForeground(new java.awt.Color(38, 38, 38));
         paidHoursLbl.setText("Paid hours");
 
-        paidHoursTF.setEditable(false);
         paidHoursTF.setBackground(new java.awt.Color(255, 255, 255));
         paidHoursTF.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
 
@@ -229,7 +228,6 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         grossPayLbl.setForeground(new java.awt.Color(38, 38, 38));
         grossPayLbl.setText("Gross pay (€)");
 
-        grossPayTF.setEditable(false);
         grossPayTF.setBackground(new java.awt.Color(255, 255, 255));
         grossPayTF.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
 
@@ -301,6 +299,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         clearBtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         clearBtn.setForeground(new java.awt.Color(38, 38, 38));
         clearBtn.setText("Clear");
+        clearBtn.addActionListener(this::clearBtnActionPerformed);
 
         viewShiftsBtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         viewShiftsBtn.setForeground(new java.awt.Color(38, 38, 38));
@@ -319,7 +318,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(titleLbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(shiftPnl, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -344,7 +343,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titleLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(shiftPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -768,6 +767,10 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_useShiftsBtnActionPerformed
 
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clearBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -821,7 +824,6 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     private javax.swing.JButton homeBtn;
     private javax.swing.JButton homeBtn1;
     private javax.swing.JButton homeBtn2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -852,6 +854,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     private javax.swing.JTextField startTF;
     private javax.swing.JLabel titleLbl;
     private javax.swing.JLabel titleLbl1;
+    private javax.swing.JLabel titleLbl2;
     private javax.swing.JLabel toLbl;
     private javax.swing.JTextField toTF;
     private javax.swing.JButton useShiftsBtn;
