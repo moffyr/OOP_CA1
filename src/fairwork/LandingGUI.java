@@ -248,7 +248,6 @@ public class LandingGUI extends javax.swing.JFrame {
 
     private void rightsOpenBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightsOpenBtnActionPerformed
         //opens RightsMenuGUI
-        new fairwork.rights.RightsMenuGUI().setVisible(true);
     }//GEN-LAST:event_rightsOpenBtnActionPerformed
 
     private void rightsOpenBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightsOpenBtn1ActionPerformed
@@ -256,7 +255,8 @@ public class LandingGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_rightsOpenBtn1ActionPerformed
 
     private void rightsOpenBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightsOpenBtn2ActionPerformed
-        // TODO add your handling code here:
+        new FairWorkReports.FairWorkReportsGUI().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_rightsOpenBtn2ActionPerformed
 
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
