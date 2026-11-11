@@ -56,11 +56,24 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         viewShiftsBtn = new javax.swing.JButton();
         homeBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        titleLbl = new javax.swing.JLabel();
+        fromLbl = new javax.swing.JLabel();
+        toLbl = new javax.swing.JLabel();
+        fromTF = new javax.swing.JTextField();
+        showBtn = new javax.swing.JButton();
+        toTF = new javax.swing.JTextField();
+        shiftsPnl = new javax.swing.JPanel();
+        shiftsLbl = new javax.swing.JLabel();
+        deleteBtn = new javax.swing.JButton();
+        shiftsScroll = new javax.swing.JScrollPane();
+        shiftsTbl = new javax.swing.JTable();
+        homeBtn1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("    Add Work Shift");
 
         shiftPnl.setBackground(new java.awt.Color(255, 255, 255));
@@ -292,7 +305,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(payPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 21, Short.MAX_VALUE))
+                                .addGap(0, 27, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addComponent(viewShiftsBtn)
@@ -328,15 +341,127 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Add Shift", jPanel1);
 
+        titleLbl.setBackground(new java.awt.Color(255, 255, 255));
+        titleLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titleLbl.setText("Hours & Earnings Summary");
+        titleLbl.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 25, 0, 0));
+        titleLbl.setOpaque(true);
+
+        fromLbl.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        fromLbl.setForeground(new java.awt.Color(38, 38, 38));
+        fromLbl.setText("From (dd/mm/yyyy)");
+
+        toLbl.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        toLbl.setForeground(new java.awt.Color(38, 38, 38));
+        toLbl.setText("To");
+
+        fromTF.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+
+        showBtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        showBtn.setText("Show Summary");
+
+        toTF.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+
+        shiftsPnl.setBackground(new java.awt.Color(255, 255, 255));
+
+        shiftsLbl.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        shiftsLbl.setForeground(new java.awt.Color(38, 38, 38));
+        shiftsLbl.setText("Saved shifts");
+
+        deleteBtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        deleteBtn.setForeground(new java.awt.Color(38, 38, 38));
+        deleteBtn.setText("Delete Selected Shift");
+
+        shiftsTbl.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        shiftsTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Date", "Start", "End", "Break (mins)", "Paid hours", "Gross pay (€)"
+            }
+        ));
+        shiftsTbl.setRowHeight(26);
+        shiftsScroll.setViewportView(shiftsTbl);
+
+        javax.swing.GroupLayout shiftsPnlLayout = new javax.swing.GroupLayout(shiftsPnl);
+        shiftsPnl.setLayout(shiftsPnlLayout);
+        shiftsPnlLayout.setHorizontalGroup(
+            shiftsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shiftsPnlLayout.createSequentialGroup()
+                .addGroup(shiftsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(shiftsPnlLayout.createSequentialGroup()
+                        .addGap(645, 645, 645)
+                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(shiftsPnlLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(shiftsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(shiftsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(shiftsLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        shiftsPnlLayout.setVerticalGroup(
+            shiftsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shiftsPnlLayout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addComponent(shiftsLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(shiftsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 9, Short.MAX_VALUE))
+        );
+
+        homeBtn1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        homeBtn1.setForeground(new java.awt.Color(38, 38, 38));
+        homeBtn1.setText("Home");
+        homeBtn1.addActionListener(this::homeBtn1ActionPerformed);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 864, Short.MAX_VALUE)
+            .addComponent(titleLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(homeBtn1))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(fromLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fromTF, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(toLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(toTF, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(showBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 231, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(shiftsPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(titleLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fromLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fromTF, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toTF, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(shiftsPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(homeBtn1)
+                .addGap(0, 27, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Earning Summary", jPanel2);
@@ -345,7 +470,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 864, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,7 +483,9 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,6 +505,12 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         new fairwork.LandingGUI().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_homeBtnActionPerformed
+
+    private void homeBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtn1ActionPerformed
+        // open LandingGUI
+        new fairwork.LandingGUI().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_homeBtn1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -412,11 +545,15 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     private javax.swing.JButton clearBtn;
     private javax.swing.JLabel dateLbl;
     private javax.swing.JTextField dateTF;
+    private javax.swing.JButton deleteBtn;
     private javax.swing.JLabel endLbl;
     private javax.swing.JTextField endTF;
+    private javax.swing.JLabel fromLbl;
+    private javax.swing.JTextField fromTF;
     private javax.swing.JLabel grossPayLbl;
     private javax.swing.JTextField grossPayTF;
     private javax.swing.JButton homeBtn;
+    private javax.swing.JButton homeBtn1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -431,8 +568,16 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     private javax.swing.JButton saveBtn;
     private javax.swing.JLabel shiftDetailsLbl;
     private javax.swing.JPanel shiftPnl;
+    private javax.swing.JLabel shiftsLbl;
+    private javax.swing.JPanel shiftsPnl;
+    private javax.swing.JScrollPane shiftsScroll;
+    private javax.swing.JTable shiftsTbl;
+    private javax.swing.JButton showBtn;
     private javax.swing.JLabel startLbl;
     private javax.swing.JTextField startTF;
+    private javax.swing.JLabel titleLbl;
+    private javax.swing.JLabel toLbl;
+    private javax.swing.JTextField toTF;
     private javax.swing.JButton viewShiftsBtn;
     // End of variables declaration//GEN-END:variables
 }
