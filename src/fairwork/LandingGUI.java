@@ -248,7 +248,7 @@ public class LandingGUI extends javax.swing.JFrame {
 
     private void rightsOpenBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightsOpenBtnActionPerformed
         //opens RightsGUI
-        new fairwork.rights.RightsGUI().setVisible(true);
+        new FairWorkReports.FairWorkReportsGUI().setVisible(true);
         this.dispose();
         
     }//GEN-LAST:event_rightsOpenBtnActionPerformed
