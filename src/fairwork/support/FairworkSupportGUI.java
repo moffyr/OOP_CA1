@@ -6,7 +6,7 @@ package fairwork.support;
 
 /**
  *
- * @author admin
+ * @author Shourya Uppal
  */
 public class FairworkSupportGUI extends javax.swing.JFrame {
     
