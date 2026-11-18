@@ -11,7 +11,7 @@ import java.time.LocalDate;
  * It is abstract because we only ever create a WorkShift or a PayRecord,
  * never a plain WorkRecord.
  * 
- * @author admin
+ * @author Shourya Uppal
  */
 public abstract class WorkRecord {
     // protected so the child classes can use them directly
@@ -32,5 +32,5 @@ public abstract class WorkRecord {
     }
     
     // each child class describes itself differently (polymorphism)
-    public abstract String getRecordDetails();
+    public abstract String getRecordDetails(); 
 }
