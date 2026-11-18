@@ -221,14 +221,14 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         paidHoursLbl.setForeground(new java.awt.Color(38, 38, 38));
         paidHoursLbl.setText("Paid hours");
 
-        paidHoursTF.setBackground(new java.awt.Color(255, 255, 255));
+        paidHoursTF.setEditable(false);
         paidHoursTF.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
 
         grossPayLbl.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         grossPayLbl.setForeground(new java.awt.Color(38, 38, 38));
         grossPayLbl.setText("Gross pay (€)");
 
-        grossPayTF.setBackground(new java.awt.Color(255, 255, 255));
+        grossPayTF.setEditable(false);
         grossPayTF.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
 
         calcHintLbl.setForeground(new java.awt.Color(105, 105, 105));
