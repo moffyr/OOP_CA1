@@ -94,4 +94,20 @@ public class EmploymentManager {
         }
         return total;
     }
+    
+     // ---------------- pay records ----------------
+
+    // ADD: gives the record the next free id, adds it to the list and saves
+    public PayRecord addPayRecord(LocalDate periodStart, LocalDate periodEnd,
+            double expected, double actual) {
+        PayRecord record = new PayRecord(nextPayRecordId, periodStart, periodEnd, expected, actual);
+        nextPayRecordId++;
+        payRecords.add(record);
+        return record;
+    }
+
+    // DISPLAY: returns every saved pay record
+    public ArrayList<PayRecord> viewPayRecords() {
+        return payRecords;
+    }
 }
