@@ -799,7 +799,16 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_compareBtnActionPerformed
 
     private void useShiftsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useShiftsBtnActionPerformed
-        // TODO add your handling code here:
+        LocalDate[] period = readPeriod();
+        if (period == null) {
+            return;
+        }
+        // adds up the gross pay of saved shifts inside the period
+        double expected = checker.calculateExpectedPay(manager.viewShifts(), period[0], period[1]);
+        expectedTF.setText(String.format("%.2f", expected));
+        if (expected == 0) {
+            JOptionPane.showMessageDialog(this, "No saved shifts in this period, so expected pay is €0.00.");
+        }
     }//GEN-LAST:event_useShiftsBtnActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
@@ -945,6 +954,26 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         rateTF.setText("");
         paidHoursTF.setText("");
         grossPayTF.setText("");
+    }
+    
+    // reads the Period start and Period end boxes; returns {start, end} or null if wrong
+    private LocalDate[] readPeriod() {
+        if (periodStartTF.getText().isBlank() || periodEndTF.getText().isBlank()) {
+            showError("Enter the period start and end dates (dd/mm/yyyy).");
+            return null;
+        }
+        try {
+            LocalDate start = LocalDate.parse(periodStartTF.getText().trim(), DATE_FORMAT);
+            LocalDate end = LocalDate.parse(periodEndTF.getText().trim(), DATE_FORMAT);
+            if (start.isAfter(end)) {
+                showError("The period start must be on or before the period end.");
+                return null;
+            }
+            return new LocalDate[]{start, end};
+        } catch (DateTimeParseException e) {
+            showError("Check both period dates are dd/mm/yyyy, e.g. 01/11/2026.");
+            return null;
+        }
     }
     
     /**
