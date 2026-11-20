@@ -89,6 +89,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         deleteBtn = new javax.swing.JButton();
         shiftsScroll = new javax.swing.JScrollPane();
         shiftsTbl = new javax.swing.JTable();
+        totalsLbl = new javax.swing.JLabel();
         homeBtn1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         titleLbl1 = new javax.swing.JLabel();
@@ -428,21 +429,24 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         shiftsTbl.setRowHeight(26);
         shiftsScroll.setViewportView(shiftsTbl);
 
+        totalsLbl.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        totalsLbl.setText("Shifts: 0   |   Total paid hours: 0.00   |   Estimated earnings: €0.00");
+
         javax.swing.GroupLayout shiftsPnlLayout = new javax.swing.GroupLayout(shiftsPnl);
         shiftsPnl.setLayout(shiftsPnlLayout);
         shiftsPnlLayout.setHorizontalGroup(
             shiftsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shiftsPnlLayout.createSequentialGroup()
-                .addGroup(shiftsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(15, 15, 15)
+                .addGroup(shiftsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(shiftsPnlLayout.createSequentialGroup()
-                        .addGap(645, 645, 645)
+                        .addComponent(totalsLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(shiftsPnlLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(shiftsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(shiftsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(shiftsLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(shiftsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(shiftsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(shiftsLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 29, Short.MAX_VALUE))
         );
         shiftsPnlLayout.setVerticalGroup(
             shiftsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -452,8 +456,13 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(shiftsScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addGroup(shiftsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(shiftsPnlLayout.createSequentialGroup()
+                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 9, Short.MAX_VALUE))
+                    .addGroup(shiftsPnlLayout.createSequentialGroup()
+                        .addComponent(totalsLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         homeBtn1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -833,6 +842,10 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
                 String.format("%.2f", s.calculateGrossPay())
             });
         }
+        // totals for whatever is shown (all shifts, or a search result)
+        totalsLbl.setText("Shifts: " + displayedShifts.size()
+                + "   |   Total paid hours: " + String.format("%.2f", manager.getTotalHours(displayedShifts))
+                + "   |   Estimated earnings: €" + String.format("%.2f", manager.getTotalEarnings(displayedShifts)));
     }
     
     // reads the five Add Shift boxes and checks them; returns null if anything is wrong
@@ -969,7 +982,8 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     private javax.swing.JLabel titleLbl2;
     private javax.swing.JLabel toLbl;
     private javax.swing.JTextField toTF;
+    private javax.swing.JLabel totalsLbl;
     private javax.swing.JButton useShiftsBtn;
     private javax.swing.JButton viewShiftsBtn;
     // End of variables declaration//GEN-END:variables
-}
+}   
