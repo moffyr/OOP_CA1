@@ -153,6 +153,10 @@ public class EmploymentManager {
                 }
                 try {
                     WorkShift shift = WorkShift.fromFileLine(line);
+                    if (shift.getHourlyRate() <= 0 || shift.getBreakMinutes() < 0) {
+                        System.out.println("Skipped an invalid shift in " + SHIFTS_FILE + ": " + line);
+                        continue;
+                    }
                     shifts.add(shift);
                     // keep the next id higher than any id already used
                     nextShiftId = Math.max(nextShiftId, shift.getRecordId() + 1);
@@ -179,6 +183,11 @@ public class EmploymentManager {
                 }
                 try {
                     PayRecord record = PayRecord.fromFileLine(line);
+                    if (record.getExpectedGrossPay() < 0 || record.getActualGrossPay() < 0
+                            || record.getPeriodStart().isAfter(record.getPeriodEnd())) {
+                        System.out.println("Skipped an invalid pay record in " + PAY_RECORDS_FILE + ": " + line);
+                        continue;
+                    }
                     payRecords.add(record);
                     nextPayRecordId = Math.max(nextPayRecordId, record.getRecordId() + 1);
                 } catch (RuntimeException e) {
