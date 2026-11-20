@@ -4,6 +4,15 @@
  */
 package fairwork.support;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Shourya Uppal
@@ -11,12 +20,25 @@ package fairwork.support;
 public class FairworkSupportGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FairworkSupportGUI.class.getName());
+    
+    // the objects this screen uses: one manager for all the data, one checker for pay
+    private final EmploymentManager manager = new EmploymentManager();
+    private final PayChecker checker = new PayChecker();
 
+    // reads and shows dates as dd/mm/yyyy; STRICT rejects impossible dates like 31/02/2026
+    private static final DateTimeFormatter DATE_FORMAT =
+            DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
+
+    // the shifts currently shown in the table, in the same order as its rows
+    private ArrayList<WorkShift> displayedShifts = new ArrayList<>();
+    
     /**
      * Creates new form FairworkSupportGUI
      */
     public FairworkSupportGUI() {
         initComponents();
+        shiftsTbl.setDefaultEditor(Object.class, null);   // table cells can't be typed into
+        refreshShiftsTable(manager.viewShifts());          // show shifts saved last time
     }
 
     /**
@@ -770,7 +792,24 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_clearBtnActionPerformed
-
+    
+    // DISPLAY: fills the Earnings Summary table with the given shifts
+    private void refreshShiftsTable(ArrayList<WorkShift> list) {
+        displayedShifts = new ArrayList<>(list);    // remember which shift is on which row
+        DefaultTableModel model = (DefaultTableModel) shiftsTbl.getModel();
+        model.setRowCount(0);                        // remove the old rows
+        for (WorkShift s : displayedShifts) {
+            model.addRow(new Object[]{
+                s.getRecordDate().format(DATE_FORMAT),
+                s.getStartTime(),
+                s.getEndTime(),
+                s.getBreakMinutes(),
+                String.format("%.2f", s.calculatePaidHours()),
+                String.format("%.2f", s.calculateGrossPay())
+            });
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
