@@ -417,6 +417,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         deleteBtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         deleteBtn.setForeground(new java.awt.Color(38, 38, 38));
         deleteBtn.setText("Delete Selected Shift");
+        deleteBtn.addActionListener(this::deleteBtnActionPerformed);
 
         shiftsTbl.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         shiftsTbl.setModel(new javax.swing.table.DefaultTableModel(
@@ -855,6 +856,27 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
             showError("Check both dates are dd/mm/yyyy, e.g. 01/11/2026.");
         }
     }//GEN-LAST:event_showBtnActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        int row = shiftsTbl.getSelectedRow();
+        if (row == -1) {
+            showError("Click a shift in the table first, then press Delete.");
+            return;
+        }
+        // the row number matches the position in displayedShifts
+        WorkShift selected = displayedShifts.get(row);
+        int choice = JOptionPane.showConfirmDialog(this,
+                "Delete this shift?\n" + selected.getRecordDetails(),
+                "Confirm delete", JOptionPane.YES_NO_OPTION);
+        if (choice != JOptionPane.YES_OPTION) {
+            return;
+        }
+        // DELETE from the ArrayList (EmploymentManager also updates shifts.txt)
+        manager.deleteShift(selected.getRecordId());
+        // keep the same view: remove it from the shown list and redraw
+        displayedShifts.remove(row);
+        refreshShiftsTable(displayedShifts);
+    }//GEN-LAST:event_deleteBtnActionPerformed
     
     // DISPLAY: fills the Earnings Summary table with the given shifts
     private void refreshShiftsTable(ArrayList<WorkShift> list) {
