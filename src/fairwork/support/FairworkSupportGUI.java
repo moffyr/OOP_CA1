@@ -318,6 +318,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
 
         saveBtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         saveBtn.setText("Save Shift");
+        saveBtn.addActionListener(this::saveBtnActionPerformed);
 
         clearBtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         clearBtn.setForeground(new java.awt.Color(38, 38, 38));
@@ -791,7 +792,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_useShiftsBtnActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
-        // TODO add your handling code here:
+        clearShiftForm();
     }//GEN-LAST:event_clearBtnActionPerformed
 
     private void calculateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateBtnActionPerformed
@@ -803,6 +804,19 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         paidHoursTF.setText(String.format("%.2f", shift.calculatePaidHours()));
         grossPayTF.setText(String.format("%.2f", shift.calculateGrossPay()));
     }//GEN-LAST:event_calculateBtnActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+         WorkShift shift = readShiftForm();
+        if (shift == null) {
+            return;
+        }
+        // ADD to the ArrayList (EmploymentManager also saves it to shifts.txt)
+        WorkShift saved = manager.addShift(shift.getRecordDate(), shift.getStartTime(),
+                shift.getEndTime(), shift.getBreakMinutes(), shift.getHourlyRate());
+        refreshShiftsTable(manager.viewShifts());
+        JOptionPane.showMessageDialog(this, "Shift saved.\n" + saved.getRecordDetails());
+        clearShiftForm();
+    }//GEN-LAST:event_saveBtnActionPerformed
     
     // DISPLAY: fills the Earnings Summary table with the given shifts
     private void refreshShiftsTable(ArrayList<WorkShift> list) {
@@ -856,6 +870,17 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     private void showError(String message) {
         JOptionPane.showMessageDialog(this, message, "Please check your input",
                 JOptionPane.WARNING_MESSAGE);
+    }
+    
+    // empties the Add Shift form
+    private void clearShiftForm() {
+        dateTF.setText("");
+        startTF.setText("");
+        endTF.setText("");
+        breakTF.setText("");
+        rateTF.setText("");
+        paidHoursTF.setText("");
+        grossPayTF.setText("");
     }
     
     /**
