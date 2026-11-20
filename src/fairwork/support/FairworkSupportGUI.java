@@ -795,14 +795,23 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_saveBtn1ActionPerformed
 
     private void compareBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compareBtnActionPerformed
-        // TODO add your handling code here:
+        double[] amounts = readAmounts();
+        if (amounts == null) {
+            return;
+        }
+
+        double difference = checker.comparePay(amounts[0], amounts[1]);
+        differenceTF.setText(String.format("%.2f", difference));
+
+        JOptionPane.showMessageDialog(this, checker.getComparisonMessage(difference),
+                "Pay check", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_compareBtnActionPerformed
 
     private void useShiftsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useShiftsBtnActionPerformed
         LocalDate[] period = readPeriod();
         if (period == null) {
             return;
-        }
+        }  
         // adds up the gross pay of saved shifts inside the period
         double expected = checker.calculateExpectedPay(manager.viewShifts(), period[0], period[1]);
         expectedTF.setText(String.format("%.2f", expected));
@@ -826,7 +835,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_calculateBtnActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-         WorkShift shift = readShiftForm();
+        WorkShift shift = readShiftForm();
         if (shift == null) {
             return;
         }
@@ -974,6 +983,34 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
             showError("Check both period dates are dd/mm/yyyy, e.g. 01/11/2026.");
             return null;
         }
+    }
+    
+    // reads expected and received pay, returns null if something is wrong
+    private double[] readAmounts() {
+        String expectedText = expectedTF.getText().trim();
+        String receivedText = receivedTF.getText().trim();
+
+        if (expectedText.isEmpty() || receivedText.isEmpty()) {
+            showError("Please enter both expected pay and gross pay received.");
+            return null;
+        }
+
+        double expected;
+        double received;
+        try {
+            expected = Double.parseDouble(expectedText);
+            received = Double.parseDouble(receivedText);
+        } catch (NumberFormatException e) {
+            showError("Pay amounts must be numbers, for example 216.09");
+            return null;
+        }
+
+        if (expected < 0 || received < 0) {
+            showError("Pay amounts cannot be negative.");
+            return null;
+        }
+
+        return new double[]{expected, received};
     }
     
     /**
