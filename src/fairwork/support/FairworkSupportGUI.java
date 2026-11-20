@@ -39,6 +39,9 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         initComponents();
         shiftsTbl.setDefaultEditor(Object.class, null);   // table cells can't be typed into
         refreshShiftsTable(manager.viewShifts());          // show shifts saved last time
+        historyTbl.setDefaultEditor(Object.class, null);  // same for the past comparisons table
+        historyTbl.getColumnModel().getColumn(0).setPreferredWidth(170);  // room for the full period
+        refreshHistoryTable();                             // show pay records saved last time
     }
 
     /**
@@ -791,7 +794,19 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_homeBtn2ActionPerformed
 
     private void saveBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtn1ActionPerformed
-        // TODO add your handling code here:
+        LocalDate[] period = readPeriod();
+        if (period == null) {
+            return;
+        }
+        double[] amounts = readAmounts();
+        if (amounts == null) {
+            return;
+        }
+        // ADD a pay record to the ArrayList (EmploymentManager also saves it to payrecords.txt)
+        PayRecord saved = manager.addPayRecord(period[0], period[1], amounts[0], amounts[1]);
+        differenceTF.setText(String.format("%.2f", saved.calculateDifference()));
+        refreshHistoryTable();
+        JOptionPane.showMessageDialog(this, "Pay record saved.\n" + saved.getRecordDetails());
     }//GEN-LAST:event_saveBtn1ActionPerformed
 
     private void compareBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compareBtnActionPerformed
@@ -915,6 +930,20 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         totalsLbl.setText("Shifts: " + displayedShifts.size()
                 + "   |   Total paid hours: " + String.format("%.2f", manager.getTotalHours(displayedShifts))
                 + "   |   Estimated earnings: €" + String.format("%.2f", manager.getTotalEarnings(displayedShifts)));
+    }
+    
+     // DISPLAY: fills the Past comparisons table with every saved pay record
+    private void refreshHistoryTable() {
+        DefaultTableModel model = (DefaultTableModel) historyTbl.getModel();
+        model.setRowCount(0);
+        for (PayRecord r : manager.viewPayRecords()) {
+            model.addRow(new Object[]{
+                r.getPeriodStart().format(DATE_FORMAT) + " - " + r.getPeriodEnd().format(DATE_FORMAT),
+                String.format("%.2f", r.getExpectedGrossPay()),
+                String.format("%.2f", r.getActualGrossPay()),
+                String.format("%.2f", r.calculateDifference())
+            });
+        }
     }
     
     // reads the five Add Shift boxes and checks them; returns null if anything is wrong
