@@ -404,6 +404,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
 
         showBtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         showBtn.setText("Show Summary");
+        showBtn.addActionListener(this::showBtnActionPerformed);
 
         toTF.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
 
@@ -826,6 +827,34 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Shift saved.\n" + saved.getRecordDetails());
         clearShiftForm();
     }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void showBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showBtnActionPerformed
+        // if both boxes are empty, show every shift again
+        if (fromTF.getText().isBlank() && toTF.getText().isBlank()) {
+            refreshShiftsTable(manager.viewShifts());
+            return;
+        }
+        if (fromTF.getText().isBlank() || toTF.getText().isBlank()) {
+            showError("Enter both a From and a To date, or leave both empty to see all shifts.");
+            return;
+        }
+        try {
+            LocalDate from = LocalDate.parse(fromTF.getText().trim(), DATE_FORMAT);
+            LocalDate to = LocalDate.parse(toTF.getText().trim(), DATE_FORMAT);
+            if (from.isAfter(to)) {
+                showError("The From date must be on or before the To date.");
+                return;
+            }
+            // SEARCH: only the shifts between the two dates
+            ArrayList<WorkShift> results = manager.searchShifts(from, to);
+            refreshShiftsTable(results);
+            if (results.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No shifts found between those dates.");
+            }
+        } catch (DateTimeParseException e) {
+            showError("Check both dates are dd/mm/yyyy, e.g. 01/11/2026.");
+        }
+    }//GEN-LAST:event_showBtnActionPerformed
     
     // DISPLAY: fills the Earnings Summary table with the given shifts
     private void refreshShiftsTable(ArrayList<WorkShift> list) {
