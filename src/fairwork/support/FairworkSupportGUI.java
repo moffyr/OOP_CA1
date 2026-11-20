@@ -260,6 +260,7 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
         calculateBtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         calculateBtn.setForeground(new java.awt.Color(38, 38, 38));
         calculateBtn.setText("Calculate");
+        calculateBtn.addActionListener(this::calculateBtnActionPerformed);
 
         javax.swing.GroupLayout payPnlLayout = new javax.swing.GroupLayout(payPnl);
         payPnl.setLayout(payPnlLayout);
@@ -792,6 +793,16 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_clearBtnActionPerformed
+
+    private void calculateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateBtnActionPerformed
+        // builds a temporary shift (id 0, not saved) just to work out the pay
+        WorkShift shift = readShiftForm();
+        if (shift == null) {
+            return;                    // the form had a problem; a message was already shown
+        }
+        paidHoursTF.setText(String.format("%.2f", shift.calculatePaidHours()));
+        grossPayTF.setText(String.format("%.2f", shift.calculateGrossPay()));
+    }//GEN-LAST:event_calculateBtnActionPerformed
     
     // DISPLAY: fills the Earnings Summary table with the given shifts
     private void refreshShiftsTable(ArrayList<WorkShift> list) {
@@ -808,6 +819,43 @@ public class FairworkSupportGUI extends javax.swing.JFrame {
                 String.format("%.2f", s.calculateGrossPay())
             });
         }
+    }
+    
+    // reads the five Add Shift boxes and checks them; returns null if anything is wrong
+    private WorkShift readShiftForm() {
+        if (dateTF.getText().isBlank() || startTF.getText().isBlank() || endTF.getText().isBlank()
+                || breakTF.getText().isBlank() || rateTF.getText().isBlank()) {
+            showError("Please fill in all five shift details.");
+            return null;
+        }
+        try {
+            LocalDate date = LocalDate.parse(dateTF.getText().trim(), DATE_FORMAT);
+            LocalTime start = LocalTime.parse(startTF.getText().trim());
+            LocalTime end = LocalTime.parse(endTF.getText().trim());
+            int breakMinutes = Integer.parseInt(breakTF.getText().trim());
+            double rate = Double.parseDouble(rateTF.getText().trim());
+
+            if (breakMinutes < 0) {
+                showError("The unpaid break can't be negative.");
+                return null;
+            }
+            if (rate <= 0) {
+                showError("The hourly rate must be more than 0.");
+                return null;
+            }
+            return new WorkShift(0, date, start, end, breakMinutes, rate);
+        } catch (DateTimeParseException e) {
+            showError("Check the date is dd/mm/yyyy (e.g. 05/11/2026) and the times are HH:mm (e.g. 09:00).");
+        } catch (NumberFormatException e) {
+            showError("The break must be a whole number of minutes and the hourly rate a number, e.g. 14.65.");
+        }
+        return null;
+    }
+
+    // shows a warning popup with the given message
+    private void showError(String message) {
+        JOptionPane.showMessageDialog(this, message, "Please check your input",
+                JOptionPane.WARNING_MESSAGE);
     }
     
     /**
