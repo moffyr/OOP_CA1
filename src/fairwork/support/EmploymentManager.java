@@ -36,6 +36,8 @@ public class EmploymentManager {
         payRecords = new ArrayList<>();
         nextShiftId = 1;
         nextPayRecordId = 1;
+        loadShifts();
+        loadPayRecords();
     }
 
     // ---------------- shifts ----------------
@@ -46,6 +48,7 @@ public class EmploymentManager {
         WorkShift shift = new WorkShift(nextShiftId, date, start, end, breakMinutes, hourlyRate);
         nextShiftId++;
         shifts.add(shift);
+        saveShifts();
         return shift;
     }
 
@@ -56,7 +59,7 @@ public class EmploymentManager {
 
     // SEARCH: returns only the shifts between the two dates (inclusive)
     public ArrayList<WorkShift> searchShifts(LocalDate from, LocalDate to) {
-        ArrayList<WorkShift> results = new ArrayList<>();
+        ArrayList<WorkShift> results =  new ArrayList<>();
         for (WorkShift shift : shifts) {
             LocalDate date = shift.getRecordDate();
             if (!date.isBefore(from) && !date.isAfter(to)) {
@@ -71,6 +74,7 @@ public class EmploymentManager {
         for (int i = 0; i < shifts.size(); i++) {
             if (shifts.get(i).getRecordId() == recordId) {
                 shifts.remove(i);
+                saveShifts();
                 return true;
             }
         }
@@ -103,11 +107,86 @@ public class EmploymentManager {
         PayRecord record = new PayRecord(nextPayRecordId, periodStart, periodEnd, expected, actual);
         nextPayRecordId++;
         payRecords.add(record);
+        savePayRecords();
         return record;
     }
 
     // DISPLAY: returns every saved pay record
     public ArrayList<PayRecord> viewPayRecords() {
         return payRecords;
+    }
+    
+    // ---------------- files ----------------
+
+    public void saveShifts() {
+        saveToFile(SHIFTS_FILE, shifts);
+    }
+
+    public void savePayRecords() {
+        saveToFile(PAY_RECORDS_FILE, payRecords);
+    }
+
+    // writes every record to the file, one line each, replacing what was there.
+    // Works for both lists because WorkShift and PayRecord both implement FileStorable.
+    private void saveToFile(String fileName, ArrayList<? extends FileStorable> records) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+            for (FileStorable record : records) {
+                bw.write(record.toFileLine());
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error writing to " + fileName + ": " + e.getMessage());
+        }
+    }
+
+    // reads shifts.txt back into the list when the app starts
+    private void loadShifts() {
+        File file = new File(SHIFTS_FILE);
+        if (!file.exists()) {
+            return;                    // first time running, nothing saved yet
+        }
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.isBlank()) {
+                    continue;          // skip empty lines
+                }
+                try {
+                    WorkShift shift = WorkShift.fromFileLine(line);
+                    shifts.add(shift);
+                    // keep the next id higher than any id already used
+                    nextShiftId = Math.max(nextShiftId, shift.getRecordId() + 1);
+                } catch (RuntimeException e) {
+                    System.out.println("Skipping bad line in " + SHIFTS_FILE + ": " + line);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading " + SHIFTS_FILE + ": " + e.getMessage());
+        }
+    }
+
+    // reads payrecords.txt back into the list when the app starts
+    private void loadPayRecords() {
+        File file = new File(PAY_RECORDS_FILE);
+        if (!file.exists()) {
+            return;
+        }
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.isBlank()) {
+                    continue;
+                }
+                try {
+                    PayRecord record = PayRecord.fromFileLine(line);
+                    payRecords.add(record);
+                    nextPayRecordId = Math.max(nextPayRecordId, record.getRecordId() + 1);
+                } catch (RuntimeException e) {
+                    System.out.println("Skipping bad line in " + PAY_RECORDS_FILE + ": " + line);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading " + PAY_RECORDS_FILE + ": " + e.getMessage());
+        }
     }
 }
