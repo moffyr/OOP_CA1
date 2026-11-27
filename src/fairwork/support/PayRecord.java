@@ -1,18 +1,19 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ *
+ * @author Shourya Uppal, 24289001
+ * PayRecord.java
+ * 
  */
 package fairwork.support;
 
 import java.time.LocalDate;
 
-/**
+/*
  * One pay comparison: what the user expected to be paid for a pay period
  * against what their payslip actually showed. Extends WorkRecord, where
  * recordDate is used as the start of the pay period, and implements
  * FileStorable so it can be saved to payrecords.txt.
  * 
- * @author Shourya Uppal
  */
 public class PayRecord extends WorkRecord implements FileStorable {
     

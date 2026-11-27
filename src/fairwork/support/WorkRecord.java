@@ -1,17 +1,18 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ *
+ * @author Shourya Uppal, 24289001
+ * WorkRecord.java
+ * 
  */
 package fairwork.support;
 
 import java.time.LocalDate;
 
-/**
+/*
  * Parent class for anything the tracker records against a date.
  * It is abstract because we only ever create a WorkShift or a PayRecord,
  * never a plain WorkRecord.
  * 
- * @author Shourya Uppal
  */
 public abstract class WorkRecord {
     // protected so the child classes can use them directly

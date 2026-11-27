@@ -1,6 +1,8 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ *
+ * @author Shourya Uppal, 24289001
+ * EmploymentManager.java
+ * 
  */
 package fairwork.support;
 
@@ -14,12 +16,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-/**
+/*
  * Manages all the user's shifts and pay records. Keeps them in two
  * ArrayLists and saves them to text files so they are still there the
  * next time the app is opened.
  * 
- * @author Shourya Uppal
  */
 public class EmploymentManager {
     private static final String SHIFTS_FILE = "shifts.txt";

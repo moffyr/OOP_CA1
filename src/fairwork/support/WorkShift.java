@@ -1,6 +1,8 @@
-  /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/*
+ *
+ * @author Shourya Uppal, 24289001
+ * WorkShift.java
+ * 
  */
 package fairwork.support;
 
@@ -8,11 +10,10 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-/**
+/*
  * One shift the user worked. Extends WorkRecord (so it has an id and a
  * date) and implements FileStorable so it can be saved to shifts.txt.
- *  
- * @author Shourya Uppal
+ * 
  */
 public class WorkShift extends WorkRecord implements FileStorable  {
     

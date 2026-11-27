@@ -1,17 +1,18 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ *
+ * @author Shourya Uppal, 24289001
+ * PayChecker.java
+ * 
  */
 package fairwork.support;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-/**
-  * Checks whether the user was paid correctly for a pay period and
+/*
+ * Checks whether the user was paid correctly for a pay period and
  * explains the result in plain words.
- * 
- * @author Shourya Uppal    
+ *    
  */
 public class PayChecker {
     // differences smaller than one cent count as paid correctly,
