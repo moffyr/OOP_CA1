@@ -37,12 +37,14 @@ public class RightsTopic {
 
     public String getTitle() {
         return title;
+        
     }
 
     public String getExplanation() {
         return explanation;
     }
         // who the worker should contact: each child class changes this
+    
     public String getWhereToReport() {
         return "Citizens Information";
     }
@@ -58,3 +60,4 @@ public class RightsTopic {
             
     
 }
+
