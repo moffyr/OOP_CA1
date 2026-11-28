@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package FairWorkReports;
+package fairwork.reports;
 
 /**
  *
  * @author mahaj
  */
-public class FairWorkReportsApp {
+public class CommunityPost {
     
 }

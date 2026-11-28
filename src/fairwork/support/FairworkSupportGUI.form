@@ -37,7 +37,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="addShiftPnl">
+        <Container class="javax.swing.JPanel" name="jPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Add Shift">
@@ -52,7 +52,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="addShiftTitleLbl" max="32767" attributes="0"/>
+                          <Component id="titleLbl2" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="shiftPnl" min="-2" pref="411" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -85,7 +85,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="addShiftTitleLbl" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="titleLbl2" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="shiftPnl" min="-2" max="-2" attributes="0"/>
@@ -107,7 +107,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="addShiftTitleLbl">
+            <Component class="javax.swing.JLabel" name="titleLbl2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -435,7 +435,9 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="paidHoursTF">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="13" style="0"/>
                     </Property>
@@ -454,7 +456,9 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="grossPayTF">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="13" style="0"/>
                     </Property>
@@ -479,9 +483,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Calculate"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="calculateBtnActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -492,9 +493,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Save Shift"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveBtnActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="clearBtn">
               <Properties>
@@ -540,7 +538,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="summaryPnl">
+        <Container class="javax.swing.JPanel" name="jPanel2">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Earning Summary">
@@ -552,7 +550,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="summaryTitleLbl" alignment="0" max="32767" attributes="0"/>
+                  <Component id="titleLbl" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -585,7 +583,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="summaryTitleLbl" min="-2" pref="62" max="-2" attributes="0"/>
+                      <Component id="titleLbl" min="-2" pref="62" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="fromLbl" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
@@ -604,7 +602,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="summaryTitleLbl">
+            <Component class="javax.swing.JLabel" name="titleLbl">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -657,9 +655,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Show Summary"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showBtnActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="toTF">
               <Properties>
@@ -679,19 +674,20 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="totalsLbl" max="32767" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="645" max="-2" attributes="0"/>
                                   <Component id="deleteBtn" min="-2" pref="190" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="shiftsScroll" min="-2" pref="820" max="-2" attributes="0"/>
-                                  <Component id="shiftsLbl" min="-2" pref="400" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="shiftsScroll" min="-2" pref="820" max="-2" attributes="0"/>
+                                      <Component id="shiftsLbl" min="-2" pref="400" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -703,16 +699,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="shiftsScroll" min="-2" pref="175" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="deleteBtn" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="totalsLbl" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="deleteBtn" min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -739,9 +727,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Delete Selected Shift"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteBtnActionPerformed"/>
-                  </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="shiftsScroll">
                   <AuxValues>
@@ -770,14 +755,6 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="totalsLbl">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="13" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Shifts: 0   |   Total paid hours: 0.00   |   Estimated earnings: &#x20ac;0.00"/>
-                  </Properties>
-                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JButton" name="homeBtn1">
@@ -796,7 +773,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="comparisonPnl">
+        <Container class="javax.swing.JPanel" name="jPanel3">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Pay Comparison">
@@ -809,7 +786,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="comparisonTitleLbl" min="-2" pref="900" max="-2" attributes="0"/>
+                      <Component id="titleLbl1" min="-2" pref="900" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
@@ -842,7 +819,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="comparisonTitleLbl" min="-2" pref="62" max="-2" attributes="0"/>
+                      <Component id="titleLbl1" min="-2" pref="62" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
@@ -863,7 +840,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="comparisonTitleLbl">
+            <Component class="javax.swing.JLabel" name="titleLbl1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -896,7 +873,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="periodStartLbl" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="startLbl1" min="-2" pref="170" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
@@ -904,7 +881,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="periodEndLbl" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="endLbl1" min="-2" pref="170" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
@@ -950,7 +927,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                  <Component id="periodStartLbl" min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="startLbl1" min="-2" pref="28" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
@@ -958,7 +935,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                                  <Component id="periodEndLbl" min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="endLbl1" min="-2" pref="28" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
@@ -1010,7 +987,7 @@
                     <Property name="text" type="java.lang.String" value="Pay period"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="periodStartLbl">
+                <Component class="javax.swing.JLabel" name="startLbl1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="13" style="0"/>
@@ -1028,7 +1005,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="periodEndLbl">
+                <Component class="javax.swing.JLabel" name="endLbl1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="13" style="0"/>
