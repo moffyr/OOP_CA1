@@ -100,7 +100,7 @@ public class LandingGUI extends javax.swing.JFrame {
         rightsTitleLbl1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rightsTitleLbl1.setText("Pay & Shift Tracker");
 
-        rightsPreviewLbl1.setText("<html>Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi.<html>");
+        rightsPreviewLbl1.setText("<html>Log your shifts, see your hours worked, total earnings and check if your payslip is right.<html>");
         rightsPreviewLbl1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         rightsOpenBtn1.setText("Open");
@@ -114,14 +114,10 @@ public class LandingGUI extends javax.swing.JFrame {
             .addGroup(rightsPnl1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(rightsPnl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(rightsPnl1Layout.createSequentialGroup()
-                        .addComponent(rightsTitleLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(114, 114, 114))
-                    .addGroup(rightsPnl1Layout.createSequentialGroup()
-                        .addGroup(rightsPnl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rightsPreviewLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rightsOpenBtn1))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(rightsTitleLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rightsPreviewLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rightsOpenBtn1))
+                .addGap(0, 27, Short.MAX_VALUE))
         );
         rightsPnl1Layout.setVerticalGroup(
             rightsPnl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
